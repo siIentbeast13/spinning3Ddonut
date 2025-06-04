@@ -20,13 +20,16 @@ vertices = [
 
 
 i=0
-while i<5:
+while i<2*pi:
     angle = 0
     while angle < 2*pi:
-        vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), sin(i)*10])
+        vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), sin(i)*20])
         if i > 0:
-            vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), -sin(i)*10])
-        angle += 0.05
+            vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), -sin(i)*20])
+        if i < 3:
+            angle += 0.1
+        else:
+            angle += 0.05
     i+=0.1
 
 
@@ -45,13 +48,23 @@ def rotate_y(angle, vertices):
 
 
 def pointVertices(vertices):
-    vertices2D = []
+    tmpVertices = []
+    #sort verticies by increasing z value
     for vertex in vertices:
+        tmpVertices.append((vertex[2], vertex))
+    tmpVertices.sort()
+    sortedVertices = []
+    for vertex in tmpVertices:
+        sortedVertices.append(vertex[1])
+    sortedVertices.reverse()
+
+    vertices2D = []
+    for vertex in sortedVertices:
         vertices2D.append((vertex[0]*fov/(vertex[2]+fov), vertex[1]*fov/(vertex[2]+fov)))
     
     i=0
     for vertex in vertices2D:
-        c = max(min(-vertices[i][2]+150, 255), 0)
+        c = max(min(200-sortedVertices[i][2], 255), 0)
         pygame.draw.circle(screen, (c,c,c), to_world_position(vertex), 3)
         i+=1
 
@@ -95,4 +108,4 @@ while True:
     pointVertices(vertices)
     
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(120)

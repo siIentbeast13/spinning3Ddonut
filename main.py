@@ -49,7 +49,6 @@ def rotate_y(angle, vertices):
 
 def pointVertices(vertices):
     tmpVertices = []
-    #sort verticies by increasing z value
     for vertex in vertices:
         tmpVertices.append((vertex[2], vertex))
     tmpVertices.sort()

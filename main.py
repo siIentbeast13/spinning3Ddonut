@@ -23,22 +23,12 @@ i=0
 while i<5:
     angle = 0
     while angle < 2*pi:
-        vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), i*10])
+        vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), sin(i)*10])
         if i > 0:
-            vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), -i*10])
+            vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), -sin(i)*10])
         angle += 0.05
     i+=0.1
 
-i=0
-while i<5:
-    angle = 0
-    angle = 0
-    while angle < 2*pi:
-        vertices.append([(100+i*10)*sin(angle), (100+i*10)*cos(angle), (5-i)*10])
-        if i > 0:
-            vertices.append([(100+i*10)*sin(angle), (100+i*10)*cos(angle), -(5-i)*10])
-        angle += 0.05
-    i+=0.1
 
 def rotate_x(angle, vertices):
     for vertex in vertices:

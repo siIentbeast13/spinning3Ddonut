@@ -20,16 +20,13 @@ vertices = [
 
 
 i=0
-while i<2*pi:
+while i<pi:
     angle = 0
     while angle < 2*pi:
-        vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), sin(i)*20])
+        vertices.append([(30+i*25)*sin(angle), (30+i*25)*cos(angle), sin(i)*30])
         if i > 0:
-            vertices.append([(50+i*10)*sin(angle), (50+i*10)*cos(angle), -sin(i)*20])
-        if i < 3:
-            angle += 0.1
-        else:
-            angle += 0.05
+            vertices.append([(30+i*25)*sin(angle), (30+i*25)*cos(angle), -sin(i)*30])
+        angle += 0.05
     i+=0.1
 
 
